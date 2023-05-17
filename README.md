@@ -4,5 +4,5 @@ O problema a ser abordado no projeto será o de um banco, onde iremos apresentar
 Integrantes: 
 - Gabriel
 - João Henrique
-- Luiz Henrique
+- Luiz Roberto
 - Vinícius Martins Freire
