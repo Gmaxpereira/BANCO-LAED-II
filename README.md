@@ -5,7 +5,7 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 
 <h3>Requisitos</h3>
 
-<h3>Instruções de Uso</h3>
+<h3>Instruções de Uso do Código</h3>
 
 <h3>Autores</h3> 
 <ul>
@@ -14,3 +14,6 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
   <li>Luiz Roberto Moretti Cavelagna</li>
   <li>Vinícius Martins Freire</li>
 </ul>
+
+<h3>TODO</h3>
+
