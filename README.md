@@ -9,12 +9,13 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 
 <h3>Autores:</h3> 
 <ul>
-  <li>Gabriel Maximino Rascão Pereira;</li>
-  <li>João Henrique de Oliveira;</li>
-  <li>Luiz Roberto Moretti Cavelagna;</li>
+  <li>Gabriel Maximino Rascão Pereira</li>
+  <li>João Henrique de Oliveira</li>
+  <li>Luiz Roberto Moretti Cavelagna</li>
   <li>Vinícius Martins Freire</li>
 </ul>
 
 <h3>TODO:</h3>
-Atualização do Github: Gabriel e Vinícius
-
+<ul>
+  <li>Atualização do Github: Gabriel e Vinícius</li>
+</ul>
