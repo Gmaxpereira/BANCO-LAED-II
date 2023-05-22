@@ -5,7 +5,7 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 
 <h3>Requisitos:<h3>
 
-<h3>Instruções de Uso do Código:</h3>
+<h3>Instruções de uso do Código:</h3>
 
 <h3>Autores:</h3> 
 <ul>
