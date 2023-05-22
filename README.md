@@ -5,6 +5,8 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 
 <h3>Requisitos</h3>
 
+<h3>Instruções de Uso</h3>
+
 <h3>Autores</h3> 
 <ul>
   <li>Gabriel Maximino Rascão Pereira</li>
