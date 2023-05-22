@@ -16,4 +16,5 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 </ul>
 
 <h3>TODO:</h3>
+Atualização do Github: Gabriel e Vinícius
 
