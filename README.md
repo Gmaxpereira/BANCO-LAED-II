@@ -5,8 +5,7 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 
 <h3>Requisitos:<h3>
 <ul>
-  <li>Compilador GCC</li>
-  <li>OBS: Biblioteca Gráfica a ser escolhida</li>
+  <li>gcc -Wall src/main.c lib/*.c -I./include</li>
 </ul>
 
 <h3>Instruções de uso do Código:</h3>
