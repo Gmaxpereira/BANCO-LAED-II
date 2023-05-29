@@ -4,8 +4,15 @@
 O problema a ser abordado no projeto será o de um sistema bancário, onde será utilizado implementações das seguintes tecnologias na linguagem C: lista, fila, ordenação, alocação dinâmica, busca, struct, entre outros. O objetivo da abordagem é facilitar e agilizar o funcionamento de algumas atividades dentro de um banco. Além disso, o projeto também tem como intuito colocar em prática os assuntos aprendidos na disciplina de Algoritmo e Estrutura de Dados II, dessa vez em um ambiente mais complexo e desafiador.
 
 <h3>Requisitos:<h3>
+<ul>
+  <li>Compilador GCC</li>
+  <li>OBS: Biblioteca Gráfica a ser escolhida</li>
+</ul>
 
 <h3>Instruções de uso do Código:</h3>
+<ul>
+  <li>gcc -Wall src/main.c lib/*.c -I./include</li>
+</ul>
 
 <h3>Autores:</h3> 
 <ul>
@@ -23,5 +30,5 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
   <li>Implementação de Lista e Fila: Luiz, João e Vinícius</li>
   <li>Quality Assurance (Testes): João</li>
   <li>Apresentação do Código (Clean Code): Gabriel</li>
-  <li>Gravação do Vídeo: Gabriel<li>
+  <li>Gravação do Vídeo: Gabriel</li>
 </ul>
