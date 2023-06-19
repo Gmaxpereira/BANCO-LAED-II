@@ -1,17 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
-/*typedef struct {
+typedef struct {
     int dia, mes, ano;
 }Date;
-*/
+
+typedef struct {
+    char siglaEstado[3], cidade[100], bairro[100], rua[100];
+    int numero;
+}Adress;
 
 typedef struct {
     int id;
     char nome[255];
-    struct cliente *prox;
+    Date dataNascimento;
+    Adress endereco;
+    double saldo;
+    double limite;
+    struct Cliente *prox;
 } Cliente;
+
+// typedef struct cliente Cliente;
 
 typedef struct {
     Cliente *inicio;
@@ -21,8 +32,8 @@ typedef struct {
 
 // Funções de Manipulação
 void cria(Lista *l);
-int insereOrdenado(Lista *l, int dado, char nome[]);
-int retira(Lista *l, int dado);
+int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero);
+int retira(Lista *l, int id);
 
 // Funções de Visualização
 int estaVazia(Lista l);
@@ -38,9 +49,14 @@ int main () {
     int id;
     char nome[255];
 
+    setlocale(LC_ALL, "Portuguese");
     cria(&l);
 
-    sucesso = insereOrdenado(&l, 1, "Lionel Messi");
+    sucesso = insereOrdenado(&l, 1, "Lionel Messi", 24, 6, 1987, "SP", "São Paulo", "Alphaville", "Rua Boca Júnior", 7);
+    sucesso = insereOrdenado(&l, 2, "Cristiano Ronaldo", 5, 2, 1985, "RJ", "Rio de Janeiro", "Bangu", "Rua Sou o Milior", 5);
+    sucesso = insereOrdenado(&l, 3, "Neymar", 5, 2, 1992, "SP", "Santos", "Sapo", "Rua Bruna Marquezine", 2);
+    sucesso = insereOrdenado(&l, 4, "Karim Benzema", 19, 12, 1987, "RS", "Porto Alegre", "Chimarrão", "Rua das Araucárias", 1);
+
 
     if (!estaVazia(l)) {
         exibe(l);
@@ -48,7 +64,7 @@ int main () {
 
     while (opcao == 1) {
         printf("\n-------------------------------------------------\n");
-        printf("Qual ID deseja remover?");
+        printf("Qual ID deseja remover? ");
         scanf("%d", &id);
 
         sucesso = retira(&l, id);
@@ -75,7 +91,7 @@ void cria(Lista *l) {
     l->tam = 0;
 }
 
-int insereOrdenado(Lista *l, int id, char nome[]) {
+int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero) {
     Cliente *aux = (Cliente *) malloc(sizeof(Cliente));
 
     if (aux == NULL)
@@ -83,19 +99,27 @@ int insereOrdenado(Lista *l, int id, char nome[]) {
 
     aux->id = id;
     strcpy(aux->nome, nome);
+    aux->dataNascimento.dia = dia;
+    aux->dataNascimento.mes = mes;
+    aux->dataNascimento.ano = ano;
+    strcpy(aux->endereco.siglaEstado, siglaEstado);
+    strcpy(aux->endereco.cidade, cidade);
+    strcpy(aux->endereco.bairro, bairro);
+    strcpy(aux->endereco.rua, rua);
+    aux->endereco.numero = numero;
     l->tam++;
 
     if (l->inicio == NULL) {
-        aux->prox = NULL;
+        (*aux).prox = NULL;
         l->inicio = aux;
         l->fim = aux;
     }
     else if(id < l->inicio->id) {
-        aux->prox = l->inicio;
+        aux->prox = (l)->inicio;
         l->inicio = aux;
     }
     else if(id > l->fim->id) {
-        aux->prox = NULL;
+        (*aux).prox = NULL;
         l->fim->prox = aux;
         l->fim = aux;
     }
@@ -203,11 +227,16 @@ void exibe(Lista l) {
     if (l.inicio == NULL) {
         printf("Lista vazia!\n");
     } else {
-        printf("\nExibindo lista do inicio ao fim:\n\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
+        printf("\t\t\t\t\t\t      Clientes\n\n");
+        printf("------------------------------------------------------------------------------------------------------------------------\n");
         aux = l.inicio;
         while (aux != NULL) {
             printf("ID: %d\n", aux->id);
             printf("Nome: %s\n", aux->nome);
+            printf("Data de Nascimento: %d/%d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
+            printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("\n");
             aux = aux->prox;
         }
     }
