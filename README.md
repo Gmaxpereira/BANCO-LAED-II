@@ -26,8 +26,8 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 <ul>
   <li>Atualização do Github: Gabriel e Vinícius</li>
   <li>Modularização de Arquivos: Luiz</li>
-  <li>Funções de Inserção, Ordenação e Pesquisa: Vinícius</li>
-  <li>Implementação de Lista e Fila: Luiz, João e Vinícius</li>
+  <li>Funções de Inserção, Ordenação e Pesquisa: João, Luiz e Vinícius</li>
+  <li>Implementação de Lista: Vinícius</li>
   <li>Quality Assurance (Testes): João</li>
   <li>Apresentação do Código (Clean Code): Gabriel</li>
   <li>Gravação do Vídeo: Gabriel</li>
