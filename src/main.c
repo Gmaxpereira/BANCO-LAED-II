@@ -35,12 +35,14 @@ typedef struct
     int tam;
 } Lista;
 
-// Funções de Manipulação
+// Funções de Manipulação:
+
 void cria(Lista *l);
 int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero);
 int retira(Lista *l, int id);
 
-// Funções de Visualização
+// Funções de Visualização:
+
 int estaVazia(Lista l);
 int getInicio(Lista l);
 int getFim(Lista l);
@@ -94,14 +96,14 @@ int main()
     return 0;
 }
 
-void cria(Lista *l)
+void cria(Lista *l) //Função para criar a lista
 {
     l->inicio = NULL;
     l->fim = NULL;
     l->tam = 0;
 }
 
-int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero)
+int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero) //Função para inserir os IDs de forma ordenada
 {
     Cliente *aux = (Cliente *)malloc(sizeof(Cliente));
 
@@ -155,7 +157,7 @@ int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, cha
     return 1;
 }
 
-int retira(Lista *l, int id)
+int retira(Lista *l, int id) //Função que remove um ID
 {
     Cliente *aux;
     Cliente *auxFim;
@@ -229,7 +231,7 @@ int retira(Lista *l, int id)
     return 1;
 }
 
-int estaVazia(Lista l)
+int estaVazia(Lista l) //Funcão que verifica se a lista está vazia
 {
     return l.inicio == NULL;
 }
@@ -249,7 +251,7 @@ int getTamanho(Lista l)
     return l.tam;
 }
 
-void exibe(Lista l)
+void exibe(Lista l) //Função que mostra a lista com seus IDs
 {
     Cliente *aux;
 
