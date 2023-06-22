@@ -107,7 +107,7 @@ int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, cha
 {
     Cliente *aux = (Cliente *)malloc(sizeof(Cliente));
 
-    if (aux == NULL)
+    if (aux == NULL) // alocando no na memoria e checando se deu certo
         return 0;
 
     aux->id = id;
@@ -122,18 +122,18 @@ int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, cha
     aux->endereco.numero = numero;
     l->tam++;
 
-    if (l->inicio == NULL)
+    if (l->inicio == NULL) // 1° Caso: primeiro elemento. Se ao inserir, a lista estiver vazia, significa que esse eh o primeiro elemento.
     {
         (*aux).prox = NULL;
         l->inicio = aux;
         l->fim = aux;
     }
-    else if (id < l->inicio->id)
+    else if (id < l->inicio->id) // 2° Caso: dado menor que o dado do inicio, insere no inicio. Se ao inserir, o dado for menor do que o dado do início, insere no início.
     {
         aux->prox = (l)->inicio;
         l->inicio = aux;
     }
-    else if (id > l->fim->id)
+    else if (id > l->fim->id) // 3° Caso: dado maior que o dado do fim, insere no fim. Se ao inserir, o dado for maior que o dado do fim, insere no fim.
     {
         (*aux).prox = NULL;
         l->fim->prox = aux;
@@ -157,7 +157,7 @@ int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, cha
     return 1;
 }
 
-int retira(Lista *l, int id) //Função que remove um ID
+int retira(Lista *l, int id) //Função que remove um ID.
 {
     Cliente *aux;
     Cliente *auxFim;
@@ -168,22 +168,22 @@ int retira(Lista *l, int id) //Função que remove um ID
         return 0;
     }
 
-    if ((id == l->inicio->id) && (l->inicio == l->fim))
+    if ((id == l->inicio->id) && (l->inicio == l->fim)) // 1° Caso: lista unitaria. Se ao retirar, a lista apresentar apenas um elemento, retira esse elemento e libera a memória.
     {
-        aux = l->inicio;
-        l->inicio = NULL;
-        l->fim = NULL;
-        free(aux);
+        aux = l->inicio; // Aux aponta para o no que vou remover.
+        l->inicio = NULL; // Inicio aponta pra Null.
+        l->fim = NULL; // Fim aponta pra Null.
+        free(aux); // Liberando memoria.
         l->tam--;
 
         return 1;
     }
 
-    if (id == l->inicio->id)
+    if (id == l->inicio->id) // 2° Caso: removendo primeiro elemento.
     {
-        aux = l->inicio;
-        l->inicio = aux->prox;
-        free(aux);
+        aux = l->inicio; // Aux aponta para o no que vou remover.
+        l->inicio = aux->prox; // Inicio aponta para o novo inicio.
+        free(aux); // Liberando memoria.
         l->tam--;
 
         return 1;
