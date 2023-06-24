@@ -6,12 +6,17 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 <h3>Requisitos:</h3>
 <ul>
   <li>Compilador GCC</li>
-  <li>Biblioteca Gráfica a ser escolhida</li>
+  <li>CMake</li>
 </ul>
 
 <h3>Instruções de uso do Código:</h3>
 <ul>
-  <li>gcc -Wall src/main.c lib/*.c -I./include</li>
+  <li>Por favor, baixe o arquivo compactado do código e o extraia aonde preferir</li>
+  <li>Em seguida, no Windows, abra o terminal e navegue até a pasta do código utilizando o comando cd</li>
+  <li>Ao chegar na pasta do código, entre na pasta build, com o comando cd build</li>
+  <li>E finalmente, utilize o comando "make --" para compilar o código e escreva ProjetoFinal (nome do executável) para rodar o código!</li>
+  <li><b>IMPORTANTE: </b>Não altere nenhum nome de pastas, arquivos ou variáveis</li>
+  <li>Agradecemos o uso do nosso código, qualquer dúvida favor entrar em contato!</li>
 </ul>
 
 <h3>Autores:</h3> 
