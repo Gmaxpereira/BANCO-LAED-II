@@ -35,10 +35,10 @@ typedef struct
     int tam;
 } Lista;
 
-// Funções de Manipulação:
+// Funções de Criação, Inserção e Retirada:
 
 void cria(Lista *l);
-int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero);
+int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero, double saldo, double limite);
 int retira(Lista *l, int id);
 
 // Funções de Visualização:
@@ -49,43 +49,130 @@ int getFim(Lista l);
 int getTamanho(Lista l);
 void exibe(Lista l);
 
+// Funções de Pesquisa, Ordenação e Modificação de Saldo:
+void buscaCliente(Lista *l, char nome[]);
+int comparePorSaldo(const void *cliente1, const void *cliente2);
+int comparePorID(const void *cliente1, const void *cliente2);
+void ordena(Lista *l, int sortOption);
+void exibeClientesPorEstado(Lista l, char siglaEstado[]);
+double getSaldo(Lista l, int id, int tam);
+int realizarSaque(Lista *lista, int id, double valorSaque);
+int realizarDeposito(Lista *lista, int id, double valorDeposito);
+
 int main()
 {
     Lista l;
-    int sucesso, opcao = 1;
+    int sucesso, sortOption, opcao = 0;
 
     int id;
-    char nome[255];
+    char nome[255], siglaEstado[3];
+    double valorSaque, saldo, valorDeposito;
 
     srand(time(NULL));
     setlocale(LC_ALL, "Portuguese");
     cria(&l);
 
-    sucesso = insereOrdenado(&l, 1, "Lionel Messi", 24, 06, 1987, "SP", "São Paulo", "Alphaville", "Rua Boca Júnior", rand() % 1000);
-    sucesso = insereOrdenado(&l, 2, "Cristiano Ronaldo", 05, 02, 1985, "RJ", "Rio de Janeiro", "Bangu", "Rua Sou o Milior", rand() % 1000);
-    sucesso = insereOrdenado(&l, 3, "Neymar", 05, 02, 1992, "SP", "Santos", "Sapo", "Rua Bruna Marquezine", rand() % 1000);
-    sucesso = insereOrdenado(&l, 4, "Karim Benzema", 19, 12, 1987, "RS", "Porto Alegre", "Chimarrão", "Rua das Araucárias", rand() % 1000);
-    sucesso = insereOrdenado(&l, 5, "Erling Haaland", 21, 07, 2000, "MT", "Tangará da Serra", "Homem do Campo", "Sítio Cambuí", rand() % 1000);
+    sucesso = insereOrdenado(&l, 1, "Lionel Messi", 24, 06, 1987, "SP", "São Paulo", "Alphaville", "Rua Boca Júnior", rand() % 1000, 9874.32, 20000);
+    sucesso = insereOrdenado(&l, 2, "Cristiano Ronaldo", 05, 02, 1985, "RJ", "Rio de Janeiro", "Bangu", "Rua Sou o Milior", rand() % 1000, 7614.13, 15000);
+    sucesso = insereOrdenado(&l, 3, "Neymar", 05, 02, 1992, "SP", "Santos", "Sapo", "Rua Bruna Marquezine", rand() % 1000, 1342.91, 5600.50);
+    sucesso = insereOrdenado(&l, 4, "Karim Benzema", 19, 12, 1987, "RS", "Porto Alegre", "Chimarrão", "Rua das Araucárias", rand() % 1000, 8431.93, 10000);
+    sucesso = insereOrdenado(&l, 5, "Erling Haaland", 21, 07, 2000, "MT", "Tangará da Serra", "Homem do Campo", "Sítio Cambuí", rand() % 1000, 5183.00, 7500.30);
+    sucesso = insereOrdenado(&l, 6, "Aragorn Elessar", 1, 03, 1915, "AM", "Gondolin", "Anduril", "Rua Guardião do Norte", rand() % 1000, 732.41, 2500.00);
+    sucesso = insereOrdenado(&l, 7, "Eddard Stark", 26, 03, 1960, "RS", "Gramado", "Winterfell", "Rua Whitewalker", rand() % 1000, 8613.91, 13000);
+    sucesso = insereOrdenado(&l, 8, "Sirius Black", 03, 11, 1959, "MG", "Poços de Caldas", "Animago", "Rua Ordem da Fênix", rand() % 1000, 12278, 30.000);
+    sucesso = insereOrdenado(&l, 9, "Paul Atreides", 17, 10, 2001, "TO", "Arrakis", "Fremen", "Rua Dagacris", rand() % 1000, 92761.99, 200000);
+    sucesso = insereOrdenado(&l, 10, "Roronoa Zoro", 11, 11, 2002, "MG", "Laugh Tale", "Santoryuu", "Rua Shishi Sonson", rand() % 1000, 7.51, 600);
 
     if (!estaVazia(l))
     {
         exibe(l);
     }
 
-    while (opcao == 1)
+    while (opcao != 9)
     {
         printf("\n-------------------------------------------------\n");
-        printf("Qual ID deseja remover? ");
-        scanf("%d", &id);
-
-        sucesso = retira(&l, id);
-        if (!sucesso)
-            printf("FALHA EM REMOVER O ID: %d\n\n", id);
-
-        exibe(l);
-
-        printf("\nDeseja remover mais algum cliente? \n1 - Sim \n2 - Nao\n");
+        printf("Qual operação deseja realizar?\n1 - Exibir os dados de um cliente\n2 - Ordenar os cliente por saldo\n3 - Ordenar os clientes por ID\n4 - Exibir todos os clientes que moram em um estado\n5 - Excluir um cliente\n6 - Exibir todos os clientes\n7 - Saque\n8 - Depósito\n9 - Sair\n");
         scanf("%d", &opcao);
+
+        switch (opcao)
+        {
+        case 1:
+            printf("Digite o nome do cliente: ");
+            scanf(" %[^\n]", nome);
+            buscaCliente(&l, nome);
+            break;
+        case 2:
+            ordena(&l, 1);
+            exibe(l);
+            break;
+        case 3:
+            ordena(&l, 2);
+            exibe(l);
+            break;
+        case 4:
+            printf("Digite a sigla do estado: ");
+            scanf(" %[^\n]", siglaEstado);
+            exibeClientesPorEstado(l, siglaEstado);
+            break;
+        case 5:
+            printf("Deseja remover o cliente com qual ID? ");
+            scanf("%d", &id);
+            sucesso = retira(&l, id);
+            if (!sucesso)
+                printf("FALHA EM REMOVER O ID: %d\n\n", id);
+            exibe(l);
+            break;
+        case 6:
+            exibe(l);
+            break;
+        case 7:
+            printf("Digite o ID do cliente: ");
+            scanf("%d", &id);
+            printf("Digite o valor do saque: ");
+            scanf("%lf", &valorSaque);
+
+            saldo = getSaldo(l, id, l.tam);
+            printf("O saldo atual do cliente com id %d é R$ %.2f\n", id, saldo);
+
+            int resultadoSaque = realizarSaque(&l, id, valorSaque);
+
+            if (resultadoSaque == -1)
+            {
+                printf("O cliente com esse ID não foi encontrado");
+            }
+            else
+            {
+                saldo = getSaldo(l, id, l.tam);
+                printf(" O saldo atual do cliente com id %d é R$ %.2f", id, saldo);
+            }
+            break;
+        case 8:
+            printf("Digite o ID do cliente: ");
+            scanf("%d", &id);
+            printf("Digite o valor do depósito: ");
+            scanf("%lf", &valorDeposito);
+
+            saldo = getSaldo(l, id, l.tam);
+            printf("O saldo atual do cliente com id %d é R$ %.2f\n", id, saldo);
+
+            int resultadoDeposito = realizarDeposito(&l, id, valorDeposito);
+
+            if (resultadoDeposito == -1)
+            {
+                printf("O cliente com esse ID não foi encontrado");
+            }
+            else
+            {
+                saldo = getSaldo(l, id, l.tam);
+                printf(" O saldo atual do cliente com id %d é R$ %.2f", id, saldo);
+            }
+            break;
+        case 9:
+            break;
+        default:
+            printf("Escolha uma opção válida!");
+            break;
+        }
     }
 
     while (!estaVazia(l))
@@ -96,14 +183,14 @@ int main()
     return 0;
 }
 
-void cria(Lista *l) //Função para criar a lista
+void cria(Lista *l) // Função para criar a lista
 {
     l->inicio = NULL;
     l->fim = NULL;
     l->tam = 0;
 }
 
-int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero) //Função para inserir os IDs de forma ordenada
+int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, char siglaEstado[], char cidade[], char bairro[], char rua[], int numero, double saldo, double limite) // Função para inserir os IDs de forma ordenada
 {
     Cliente *aux = (Cliente *)malloc(sizeof(Cliente));
 
@@ -120,6 +207,8 @@ int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, cha
     strcpy(aux->endereco.bairro, bairro);
     strcpy(aux->endereco.rua, rua);
     aux->endereco.numero = numero;
+    aux->saldo = saldo;
+    aux->limite = limite;
     l->tam++;
 
     if (l->inicio == NULL) // 1° Caso: primeiro elemento. Se ao inserir, a lista estiver vazia, significa que esse eh o primeiro elemento.
@@ -157,7 +246,7 @@ int insereOrdenado(Lista *l, int id, char nome[], int dia, int mes, int ano, cha
     return 1;
 }
 
-int retira(Lista *l, int id) //Função que remove um ID.
+int retira(Lista *l, int id) // Função que remove um ID.
 {
     Cliente *aux;
     Cliente *auxFim;
@@ -170,10 +259,10 @@ int retira(Lista *l, int id) //Função que remove um ID.
 
     if ((id == l->inicio->id) && (l->inicio == l->fim)) // 1° Caso: lista unitaria. Se ao retirar, a lista apresentar apenas um elemento, retira esse elemento e libera a memória.
     {
-        aux = l->inicio; // Aux aponta para o no que vou remover.
+        aux = l->inicio;  // Aux aponta para o no que vou remover.
         l->inicio = NULL; // Inicio aponta pra Null.
-        l->fim = NULL; // Fim aponta pra Null.
-        free(aux); // Liberando memoria.
+        l->fim = NULL;    // Fim aponta pra Null.
+        free(aux);        // Liberando memoria.
         l->tam--;
 
         return 1;
@@ -181,9 +270,9 @@ int retira(Lista *l, int id) //Função que remove um ID.
 
     if (id == l->inicio->id) // 2° Caso: removendo primeiro elemento.
     {
-        aux = l->inicio; // Aux aponta para o no que vou remover.
+        aux = l->inicio;       // Aux aponta para o no que vou remover.
         l->inicio = aux->prox; // Inicio aponta para o novo inicio.
-        free(aux); // Liberando memoria.
+        free(aux);             // Liberando memoria.
         l->tam--;
 
         return 1;
@@ -231,7 +320,7 @@ int retira(Lista *l, int id) //Função que remove um ID.
     return 1;
 }
 
-int estaVazia(Lista l) //Funcão que verifica se a lista está vazia
+int estaVazia(Lista l) // Funcão que verifica se a lista está vazia
 {
     return l.inicio == NULL;
 }
@@ -251,7 +340,7 @@ int getTamanho(Lista l)
     return l.tam;
 }
 
-void exibe(Lista l) //Função que mostra a lista com seus IDs
+void exibe(Lista l) // Função que mostra a lista com seus IDs
 {
     Cliente *aux;
 
@@ -277,7 +366,7 @@ void exibe(Lista l) //Função que mostra a lista com seus IDs
             {
                 printf("Data de Nascimento: %d/0%d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
             }
-            else if (aux->dataNascimento.dia < 10 && aux->dataNascimento.dia >= 10)
+            else if (aux->dataNascimento.dia < 10 && aux->dataNascimento.mes >= 10)
             {
                 printf("Data de Nascimento: 0%d/%d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
             }
@@ -286,8 +375,192 @@ void exibe(Lista l) //Função que mostra a lista com seus IDs
                 printf("Data de Nascimento: %d/%d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
             }
             printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("Saldo: R$ %.2f\n", aux->saldo);
+            printf("Limite: R$ %.2f\n", aux->limite);
             printf("\n");
             aux = aux->prox;
         }
     }
+}
+
+void buscaCliente(Lista *l, char nome[])
+{
+    Cliente *aux = l->inicio;
+    int encontrado = 0;
+
+    while (aux != NULL)
+    {
+        if (strcmp(aux->nome, nome) == 0)
+        {
+            printf("\nID: %d\n", aux->id);
+            printf("Nome: %s\n", aux->nome);
+            printf("Data de Nascimento: %02d/%02d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
+            printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("Saldo: R$ %.2f\n", aux->saldo);
+            printf("Limite: R$ %.2f\n", aux->limite);
+            encontrado = 1;
+            break;
+        }
+        aux = aux->prox;
+    }
+
+    if (!encontrado)
+    {
+        printf("Cliente não encontrado.\n");
+    }
+}
+
+// Função de comparação para a ordenação por saldo
+int comparePorSaldo(const void *cliente1, const void *cliente2)
+{
+    const Cliente *c1 = *(const Cliente **)cliente1;
+    const Cliente *c2 = *(const Cliente **)cliente2;
+
+    if (c1->saldo < c2->saldo)
+        return 1;
+    else if (c1->saldo > c2->saldo)
+        return -1;
+    else
+        return 0;
+}
+
+int comparePorID(const void *cliente1, const void *cliente2)
+{
+    const Cliente *c1 = *(const Cliente **)cliente1;
+    const Cliente *c2 = *(const Cliente **)cliente2;
+
+    if (c1->id < c2->id)
+        return -1;
+    else if (c1->id > c2->id)
+        return 1;
+    else
+        return 0;
+}
+
+void ordena(Lista *l, int sortOption)
+{
+    Cliente **array = malloc(l->tam * sizeof(Cliente *));
+    if (array == NULL)
+    {
+        printf("Erro de alocação de memória.\n");
+        return;
+    }
+
+    Cliente *aux = l->inicio;
+    int i = 0;
+    while (aux != NULL)
+    {
+        array[i] = aux;
+        aux = aux->prox;
+        i++;
+    }
+
+    if (sortOption == 1)
+    {
+        qsort(array, l->tam, sizeof(Cliente *), comparePorSaldo);
+    }
+    else if (sortOption == 2)
+    {
+        qsort(array, l->tam, sizeof(Cliente *), comparePorID);
+    }
+
+    l->inicio = array[0];
+    l->fim = array[l->tam - 1];
+    for (int j = 0; j < l->tam - 1; j++)
+    {
+        array[j]->prox = array[j + 1];
+    }
+    array[l->tam - 1]->prox = NULL;
+
+    free(array);
+}
+
+void exibeClientesPorEstado(Lista l, char siglaEstado[])
+{
+    Cliente *aux = l.inicio;
+    int encontrado = 0;
+
+    printf("\nClientes do estado %s:\n", siglaEstado);
+
+    while (aux != NULL)
+    {
+        if (strcmp(aux->endereco.siglaEstado, siglaEstado) == 0)
+        {
+            printf("\nID: %d\n", aux->id);
+            printf("Nome: %s\n", aux->nome);
+            printf("Data de Nascimento: %02d/%02d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
+            printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("Saldo: R$ %.2f\n", aux->saldo);
+            printf("Limite: R$ %.2f\n", aux->limite);
+            printf("\n");
+            encontrado = 1;
+        }
+        aux = aux->prox;
+    }
+
+    if (!encontrado)
+    {
+        printf("Nenhum cliente encontrado nesse estado.\n");
+    }
+}
+
+double getSaldo(Lista l, int id, int tam)
+{
+    Cliente *aux = l.inicio;
+
+    while (aux != NULL)
+    {
+        if (id == aux->id)
+        {
+            return aux->saldo;
+        }
+
+        aux = aux->prox;
+    }
+
+    printf("O cliente com esse ID não existe!");
+}
+
+int realizarSaque(Lista *lista, int idCliente, double valorSaque)
+{
+    Cliente *aux = lista->inicio;
+
+    while (aux != NULL)
+    {
+        if (aux->id == idCliente)
+        {
+            if (aux->saldo >= valorSaque)
+            {
+                aux->saldo -= valorSaque;
+                printf("O saque foi realizado com sucesso!");
+                return 1; // Saque realizado com sucesso
+            }
+            else
+            {
+                printf("O valor de saldo é insuficiente para realizar o saque!");
+                return 0; // Saldo insuficiente
+            }
+        }
+        aux = aux->prox;
+    }
+
+    return -1; // Cliente não encontrado
+}
+
+int realizarDeposito(Lista *lista, int idCliente, double valorDeposito)
+{
+    Cliente *aux = lista->inicio;
+
+    while (aux != NULL)
+    {
+        if (aux->id == idCliente)
+        {
+            aux->saldo += valorDeposito;
+            printf("O depósito foi realizado com sucesso!");
+            return 1;
+        }
+        aux = aux->prox;
+    }
+
+    return -1; // Cliente não encontrado
 }
