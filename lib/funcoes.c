@@ -1,3 +1,4 @@
+//Protótipos de funções e implementação
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
