@@ -1,0 +1,14 @@
+[
+{
+  "directory": "C:/Users/Vinicius/Desktop/BANCO-LAED-II/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\ProjetoFinal.dir\\src\\main.c.obj -c C:\\Users\\Vinicius\\Desktop\\BANCO-LAED-II\\src\\main.c",
+  "file": "C:/Users/Vinicius/Desktop/BANCO-LAED-II/src/main.c",
+  "output": "CMakeFiles/ProjetoFinal.dir/src/main.c.obj"
+},
+{
+  "directory": "C:/Users/Vinicius/Desktop/BANCO-LAED-II/build",
+  "command": "C:\\MinGW\\bin\\gcc.exe   -g -o CMakeFiles\\ProjetoFinal.dir\\lib\\cliente.c.obj -c C:\\Users\\Vinicius\\Desktop\\BANCO-LAED-II\\lib\\cliente.c",
+  "file": "C:/Users/Vinicius/Desktop/BANCO-LAED-II/lib/cliente.c",
+  "output": "CMakeFiles/ProjetoFinal.dir/lib/cliente.c.obj"
+}
+]

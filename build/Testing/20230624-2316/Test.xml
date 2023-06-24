@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Site BuildName="Win32-mingw32-make"
+	BuildStamp="20230624-2316-Experimental"
+	Name="DESKTOP-7D3NDT7"
+	Generator="ctest-3.27.0-rc3"
+	CompilerName="C:/MinGW/bin/g++.exe"
+	CompilerVersion=""
+	OSName="Windows"
+	Hostname="DESKTOP-7D3NDT7"
+	OSRelease=" Personal"
+	OSVersion=" (Build 19045)"
+	OSPlatform="AMD64"
+	Is64Bits="1"
+	VendorString="GenuineIntel"
+	VendorID="Intel Corporation"
+	FamilyID="6"
+	ModelID="5"
+	ProcessorCacheSize="-1"
+	NumberOfLogicalCPU="4"
+	NumberOfPhysicalCPU="2"
+	TotalVirtualMemory="9824"
+	TotalPhysicalMemory="8096"
+	LogicalProcessorsPerPhysical="2"
+	ProcessorClockFrequency="1795"
+	>
+	<Testing>
+		<StartDateTime>Jun 24 20:16 Hora oficial do Brasil</StartDateTime>
+		<StartTestTime>1687648574</StartTestTime>
+		<TestList/>
+		<EndDateTime>Jun 24 20:16 Hora oficial do Brasil</EndDateTime>
+		<EndTestTime>1687648574</EndTestTime>
+		<ElapsedMinutes>0</ElapsedMinutes>
+	</Testing>
+</Site>
