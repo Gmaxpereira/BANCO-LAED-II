@@ -21,11 +21,11 @@ int main()
     sucesso = insereOrdenado(&l, 1, "Lionel Messi", 24, 06, 1987, "SP", "Sao Paulo", "Alphaville", "Rua Boca Junior", rand() % 1000, 9874.32, 20000);
     sucesso = insereOrdenado(&l, 2, "Cristiano Ronaldo", 05, 02, 1985, "RJ", "Rio de Janeiro", "Bangu", "Rua Sou o Milior", rand() % 1000, 7614.13, 15000);
     sucesso = insereOrdenado(&l, 3, "Neymar", 05, 02, 1992, "SP", "Santos", "Sapo", "Rua Bruna Marquezine", rand() % 1000, 1342.91, 5600.50);
-    sucesso = insereOrdenado(&l, 4, "Karim Benzema", 19, 12, 1987, "RS", "Porto Alegre", "Chimarrão", "Rua das Araucarias", rand() % 1000, 8431.93, 10000);
+    sucesso = insereOrdenado(&l, 4, "Karim Benzema", 19, 12, 1987, "RS", "Porto Alegre", "Chimarrao", "Rua das Araucarias", rand() % 1000, 8431.93, 10000);
     sucesso = insereOrdenado(&l, 5, "Erling Haaland", 21, 07, 2000, "MT", "Tangara da Serra", "Homem do Campo", "Sitio Cambui", rand() % 1000, 5183.00, 7500.30);
     sucesso = insereOrdenado(&l, 6, "Aragorn Elessar", 1, 03, 1915, "AM", "Gondolin", "Anduril", "Rua Guardiao do Norte", rand() % 1000, 732.41, 2500.00);
     sucesso = insereOrdenado(&l, 7, "Eddard Stark", 26, 03, 1960, "RS", "Gramado", "Winterfell", "Rua Whitewalker", rand() % 1000, 8613.91, 13000);
-    sucesso = insereOrdenado(&l, 8, "Sirius Black", 03, 11, 1959, "MG", "Poços de Caldas", "Animago", "Rua Ordem da Fenix", rand() % 1000, 12278, 30000);
+    sucesso = insereOrdenado(&l, 8, "Sirius Black", 03, 11, 1959, "MG", "Pocos de Caldas", "Animago", "Rua Ordem da Fenix", rand() % 1000, 12278, 30000);
     sucesso = insereOrdenado(&l, 9, "Paul Atreides", 17, 10, 2001, "TO", "Arrakis", "Fremen", "Rua Dagacris", rand() % 1000, 92761.99, 200000);
     sucesso = insereOrdenado(&l, 10, "Roronoa Zoro", 11, 11, 2002, "MG", "Laugh Tale", "Santoryuu", "Rua Shishi Sonson", rand() % 1000, 7.51, 600);
 
