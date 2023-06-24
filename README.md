@@ -29,11 +29,11 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
 
 <h3>TODO:</h3>
 <ul>
-  <li>Atualização do Github: Gabriel e Vinícius</li>
-  <li>Modularização de Arquivos: Luiz</li>
-  <li>Funções de Inserção, Ordenação e Pesquisa: João, Luiz e Vinícius</li>
-  <li>Implementação de Lista: Vinícius</li>
-  <li>Quality Assurance (Testes): João</li>
-  <li>Apresentação do Código (Clean Code): Gabriel</li>
+  <li>Atualização do Github: Gabriel e Vinícius (FEITO)</li>
+  <li>Modularização de Arquivos: Luiz (FEITO)</li>
+  <li>Funções de Inserção, Ordenação e Pesquisa: João, Luiz e Vinícius (FEITO)</li>
+  <li>Implementação de Lista: Vinícius (FEITO)</li>
+  <li>Quality Assurance (Testes): João (FEITO)</li>
+  <li>Apresentação do Código (Clean Code): Gabriel (FEITO)</li>
   <li>Gravação do Vídeo: Gabriel</li>
 </ul>
