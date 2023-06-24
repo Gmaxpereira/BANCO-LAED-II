@@ -194,7 +194,7 @@ void exibe(Lista l) // Função que mostra a lista com seus IDs
             {
                 printf("Data de Nascimento: %d/%d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
             }
-            printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("Endereco: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
             printf("Saldo: R$ %.2f\n", aux->saldo);
             printf("Limite: R$ %.2f\n", aux->limite);
             printf("\n");
@@ -215,7 +215,7 @@ void buscaCliente(Lista *l, char nome[])
             printf("\nID: %d\n", aux->id);
             printf("Nome: %s\n", aux->nome);
             printf("Data de Nascimento: %02d/%02d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
-            printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("Endereco: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
             printf("Saldo: R$ %.2f\n", aux->saldo);
             printf("Limite: R$ %.2f\n", aux->limite);
             encontrado = 1;
@@ -262,7 +262,7 @@ void ordena(Lista *l, int sortOption)
     Cliente **array = malloc(l->tam * sizeof(Cliente *));
     if (array == NULL)
     {
-        printf("Erro de alocação de memória.\n");
+        printf("Erro de alocacao de memoria.\n");
         return;
     }
 
@@ -309,7 +309,7 @@ void exibeClientesPorEstado(Lista l, char siglaEstado[])
             printf("\nID: %d\n", aux->id);
             printf("Nome: %s\n", aux->nome);
             printf("Data de Nascimento: %02d/%02d/%d\n", aux->dataNascimento.dia, aux->dataNascimento.mes, aux->dataNascimento.ano);
-            printf("Endereço: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
+            printf("Endereco: %s, %d, %s, %s - %s\n", aux->endereco.rua, aux->endereco.numero, aux->endereco.bairro, aux->endereco.cidade, aux->endereco.siglaEstado);
             printf("Saldo: R$ %.2f\n", aux->saldo);
             printf("Limite: R$ %.2f\n", aux->limite);
             printf("\n");
@@ -338,7 +338,7 @@ double getSaldo(Lista l, int id, int tam)
         aux = aux->prox;
     }
 
-    printf("O cliente com esse ID não existe!");
+    printf("O cliente com esse ID nao existe!");
 }
 
 int realizarSaque(Lista *lista, int idCliente, double valorSaque)
@@ -357,7 +357,7 @@ int realizarSaque(Lista *lista, int idCliente, double valorSaque)
             }
             else
             {
-                printf("O valor de saldo é insuficiente para realizar o saque!");
+                printf("O valor de saldo eh insuficiente para realizar o saque!");
                 return 0; // Saldo insuficiente
             }
         }
@@ -376,7 +376,7 @@ int realizarDeposito(Lista *lista, int idCliente, double valorDeposito)
         if (aux->id == idCliente)
         {
             aux->saldo += valorDeposito;
-            printf("O depósito foi realizado com sucesso!");
+            printf("O deposito foi realizado com sucesso!");
             return 1;
         }
         aux = aux->prox;
