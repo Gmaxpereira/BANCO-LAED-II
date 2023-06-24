@@ -4,9 +4,8 @@ project(ProjetoFinal VERSION 0.1.0 LANGUAGES C)
 include(CTest)
 enable_testing()
 
-add_executable(ProjetoFinal main.c)
+add_executable(ProjetoFinal ../src/main.c ../lib/cliente.c)
 
 set(CPACK_PROJECT_NAME ${PROJECT_NAME})
 set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
 include(CPack)
-
