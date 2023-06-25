@@ -35,5 +35,5 @@ O problema a ser abordado no projeto será o de um sistema bancário, onde será
   <li>Implementação de Lista: Vinícius (FEITO)</li>
   <li>Quality Assurance (Testes): João (FEITO)</li>
   <li>Apresentação do Código (Clean Code): Gabriel (FEITO)</li>
-  <li>Gravação do Vídeo: Gabriel</li>
+  <li>Gravação do Vídeo: Gabriel (FEITO)</li>
 </ul>
