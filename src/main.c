@@ -5,6 +5,11 @@
 #include <time.h>
 #include "../include/cliente.h"
 
+/*
+Autores: Gabriel Maximino, João Henrique,
+         Luiz Roberto e Vinícius Martins
+*/
+
 int main()
 {
     Lista l;
